@@ -8,9 +8,9 @@ const transactions = [
     { type: "deposit", amount: 50 }
 ]
 
-function runningBalanceCalculator () {
+function runningBalanceCalculator (transactions) {
     let balance = 0;
-    let finalArr = [];
+    const finalArr = [];
 
     transactions.forEach((t) => {
         // console.log(t)
@@ -18,11 +18,18 @@ function runningBalanceCalculator () {
             balance += t.amount;
         } else if (t.type === "withdrawal") {
             balance -= t.amount;
+        } else {
+            throw new Error(`Unknown transaction type: ${t.type}`);
         }
-        console.log(balance);
+
+        if (balance < 0) {
+            throw new Error("Balance cannot be smaller than 0!")
+        }
+        
         finalArr.push(balance);
-        console.log(finalArr);
+        
     })
+    return finalArr;
 }
 
-runningBalanceCalculator();
+console.log(runningBalanceCalculator(transactions));
