@@ -9,7 +9,20 @@ const transactions = [
 ]
 
 function runningBalanceCalculator () {
-    
+    let balance = 0;
+    let finalArr = [];
+
+    transactions.forEach((t) => {
+        // console.log(t)
+        if (t.type === "deposit") {
+            balance += t.amount;
+        } else if (t.type === "withdrawal") {
+            balance -= t.amount;
+        }
+        console.log(balance);
+        finalArr.push(balance);
+        console.log(finalArr);
+    })
 }
 
 runningBalanceCalculator();
