@@ -29,7 +29,7 @@ function runningBalanceCalculator (transactions) {
         if (balance < 0) {
             throw new Error("Balance cannot be smaller than 0!")
         }
-        
+        // add balance to arr
         finalArr.push(balance);
         
     })
