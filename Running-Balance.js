@@ -10,7 +10,7 @@ const transactions = [
 
 function runningBalanceCalculator (transactions) {
     let balance = 0;
-    const finalArr = [];
+    const balances = [];
 
     transactions.forEach((t) => {
         // console.log(t) to test
@@ -30,10 +30,10 @@ function runningBalanceCalculator (transactions) {
             throw new Error("Balance cannot be smaller than 0!")
         }
         // add balance to arr
-        finalArr.push(balance);
+        balances.push(balance);
         
     })
-    return finalArr;
+    return balances;
 }
 
 console.log(runningBalanceCalculator(transactions));
