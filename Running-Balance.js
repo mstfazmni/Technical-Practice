@@ -17,10 +17,10 @@ function runningBalanceCalculator (transactions) {
         // if deposti add to balance
         if (t.type === "deposit") {
             balance += t.amount;
-            // if withdrawal subtract from balance
+            // if withdrawal subtract from balance.
         } else if (t.type === "withdrawal") {
             balance -= t.amount;
-            // else throw error
+            // else throw error.
         } else {
             throw new Error(`Unknown transaction type: ${t.type}`);
         }
