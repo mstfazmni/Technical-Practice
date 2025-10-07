@@ -8,11 +8,15 @@ const orders = [
 function recentOrderPerCustomer (orders) {
 
     const recentOrder = orders.reduce((acc, order) => {
-        const { customerId, date } = order;
+        const { customerId, date, total } = order;
 
         if (acc[customerId]) {
             if (new Date(date) > new Date(acc[customerId].date)) {
                 acc[customerId] = order;
+            } else if (new Date(date).getTime() === new Date(acc[customerId].date).getTime()) {
+                if (total > acc[customerId].total) {
+                    acc[customerId] = order;
+                } 
             }
         } else {
             acc[customerId] = order;
