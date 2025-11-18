@@ -14,3 +14,5 @@ const products: Product[] = [
     { title: "Notebook", price: 20, inStock: true },
     { title: "Speaker", price: 40, inStock: false }
 ]
+
+export default products;
