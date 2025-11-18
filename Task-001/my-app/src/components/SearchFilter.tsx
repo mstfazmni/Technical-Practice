@@ -7,6 +7,7 @@ export function SearchFilter () {
     return (
         <div>
             <div className='products-div'>
+                <h3>All Products</h3>
                 <ul>
                     {filteredProducts.map((product, index) => (
                         <li key={index}>
