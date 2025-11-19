@@ -22,15 +22,31 @@ interface Transaction {
     notes?: string
 }
 
+enum AccountType {
+    Checking = "Checking",
+    Savings = "Savings",
+    Credit = "Credit"
+}
+
+interface UserAccount {
+    accountId: string,
+    ownerName: string,
+    balance: number,
+    type: AccountType,
+    transactions: Transaction[]
+}
 
 
 function displayVar (param: Transaction) {
     return `id: ${param.id} - type: ${param.type} - amount: ${param.amount} - currency: ${param.currency} - status: ${param.status}`;
 }
 
+function generateId () {
+    return `txn_${Math.floor(Math.random() * 1000)}`;
+}
 
 const transaction1: Transaction = {
-    id: "Food",
+    id: generateId(),
     type: TransactionType.Payment,
     amount: 120,
     currency: "Dollar",
