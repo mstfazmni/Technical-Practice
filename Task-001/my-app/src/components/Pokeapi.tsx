@@ -8,6 +8,7 @@ interface Pokemon {
 export function Pokeapi () {
     const [data, setData] = useState<Pokemon[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() =>  {
         async function callApi() {
@@ -17,6 +18,7 @@ export function Pokeapi () {
                 setData(data.results);
             } catch (err) {
                 console.error(err); // optional error handling
+                setError("Error fetching data!")
             } finally {
                 setLoading(false); // only stop loading once fetch is done
             }
@@ -33,6 +35,10 @@ export function Pokeapi () {
                 <h3 className='d-flex flex-column justify-content-center text-bg-secondary mt-3'>Loading..!</h3>
             </div>
     );
+    }
+
+    if (error) {
+        return <div className='text-danger'>{error}</div>
     }
 
     return (
